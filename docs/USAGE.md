@@ -74,7 +74,7 @@ $codex-collab-switch 退出协同
 
 ### 安装后怎么没出现？
 
-检查客户端读取的个人 Skill 目录，必要时使用 Legacy 安装路径并重启客户端。不要同时在两个目录安装同名 Skill。客户端对 `$`、`@` 和选择器的支持不同，优先使用它自己的 Skill 选择器。
+检查 Codex 读取的个人 Skill 目录，必要时使用 Legacy 安装路径并重启 Codex。不要同时在两个目录安装同名 Skill。桌面版从 Skill 选择器选择 `codex-collab-switch`；Codex CLI / IDE 扩展可输入 `$` 选择 Skill。本文不要求使用 `@` 调用。
 
 ### 为什么直接说“开启协同”没有加载？
 

@@ -6,7 +6,7 @@
 
 ## 快速使用
 
-安装后，在支持 `$` 调用的客户端输入：
+安装后，在 Codex 中选择 `codex-collab-switch` Skill，再输入“开启协同”。Codex CLI / IDE 扩展可以直接输入：
 
 ```text
 $codex-collab-switch 开启协同
@@ -24,7 +24,9 @@ $codex-collab-switch 开启协同，用 6luna，high
 $codex-collab-switch 退出协同
 ```
 
-在支持 `@` Skill 的客户端，用选择器选择 `codex-collab-switch`，或使用客户端支持的 `@codex-collab-switch` 调用方式。首次建议显式选择 Skill，不能保证只输入自然语言就能发现尚未加载的 Skill。当前对话加载后，可以直接说“开启协同”“退出协同”“恢复单模型”。
+本项目面向 Codex。桌面版请从输入框的 Skill 选择器选择 `codex-collab-switch`；CLI / IDE 扩展可输入 `$` 选择 Skill，或使用上面的完整命令。首次必须显式选择或调用本 Skill。当前对话加载后，可以直接说“开启协同”“退出协同”“恢复单模型”。无需使用 `@codex-collab-switch`。
+
+调用方式参考 [OpenAI 官方 Skill 文档](https://learn.chatgpt.com/docs/build-skills)。
 
 仅调用 `$codex-collab-switch` 而不说明动作时，会询问要开启还是退出，不会自动开启。讨论、引用这些命令不会切换模式。
 
@@ -43,6 +45,16 @@ $codex-collab-switch 退出协同
 主模型始终沿用用户当前对话选择的模型和思考强度。Skill 不替用户切换主模型。分叉/复制历史的隔离边界见下文“能力与限制”。
 
 ## 安装
+
+### 只下载单个 Skill（推荐）
+
+打开 [Releases](https://github.com/hehe1885/codex-collab-switch/releases/latest)，下载附件 **`codex-collab-switch-skill-v0.4.1.zip`**。这份附件仅包含一个 `codex-collab-switch` 文件夹（含 Skill 指令、引用文件、元数据和 MIT 许可），不包含仓库安装脚本和测试。
+
+解压后将整个 `codex-collab-switch` 文件夹放入 `~/.agents/skills/`。Windows 对应 `%USERPROFILE%\.agents\skills\`。最终应直接出现 `~/.agents/skills/codex-collab-switch/SKILL.md`，不要多套一层同名目录。重启 Codex 后从 Skill 选择器选择。已存在同名目录时先备份，再替换。
+
+Release 页面中 GitHub 自动附带的 “Source code (zip/tar.gz)” 是完整仓库源码；只想安装 Skill 请下载上面指定的 Skill 附件。
+
+### 从源码安装
 
 先取得源码：
 

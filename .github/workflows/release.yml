@@ -1,0 +1,49 @@
+name: Publish single Skill release
+
+on:
+  push:
+    branches: [main]
+    paths: ["docs/releases/v0.4.1.md"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-v0.4.1
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+      - name: Validate Skill package
+        run: |
+          python3 tests/test_package_contract.py
+          bash -n install.sh uninstall.sh
+      - name: Build single Skill archive
+        shell: python
+        run: |
+          from pathlib import Path
+          from zipfile import ZipFile, ZIP_DEFLATED
+          skill = Path("skills/codex-collab-switch")
+          output = Path("dist/codex-collab-switch-skill-v0.4.1.zip")
+          output.parent.mkdir(exist_ok=True)
+          with ZipFile(output, "w", ZIP_DEFLATED) as archive:
+              for path in sorted(skill.rglob("*")):
+                  if path.is_file():
+                      archive.write(path, "codex-collab-switch/" + path.relative_to(skill).as_posix())
+              archive.write("LICENSE", "codex-collab-switch/LICENSE")
+          with ZipFile(output) as archive:
+              assert archive.testzip() is None
+              assert "codex-collab-switch/SKILL.md" in archive.namelist()
+              assert {name.split("/")[0] for name in archive.namelist()} == {"codex-collab-switch"}
+      - name: Publish release and Skill attachment
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh release create v0.4.1 dist/codex-collab-switch-skill-v0.4.1.zip --target "$GITHUB_SHA" --title "Codex Collab Switch v0.4.1" --notes-file docs/releases/v0.4.1.md

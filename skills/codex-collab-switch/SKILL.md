@@ -7,7 +7,7 @@ description: Enable or exit collaboration in the current chat on explicit reques
 
 ## Route the request
 
-Use `$codex-collab-switch` or `@codex-collab-switch` with an action, or an explicit request such as “开启协同” / “退出协同” once this skill is loaded. Installing, loading, mentioning, comparing or quoting this skill is not activation. Do not delegate merely because a task is complex.
+Use the Codex skill picker or `$codex-collab-switch` with an action, or an explicit request such as “开启协同” / “退出协同” once this skill is loaded. Installing, loading, mentioning, comparing or quoting this skill is not activation. Do not delegate merely because a task is complex.
 
 - “退出协同” / “恢复单模型”: immediately follow [exit.md](references/exit.md). This takes precedence over activation or pending selection. Do not run model selection. Exiting while already independent is harmless.
 - “开启协同”: follow the activation and execution rules below.
