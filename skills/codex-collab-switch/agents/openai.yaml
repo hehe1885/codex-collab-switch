@@ -1,0 +1,6 @@
+interface:
+  display_name: "Codex Collab Switch"
+  short_description: "Enable or exit collaboration in the current chat"
+  default_prompt: "Use $codex-collab-switch to choose whether to enable or exit collaboration in this chat."
+policy:
+  allow_implicit_invocation: false

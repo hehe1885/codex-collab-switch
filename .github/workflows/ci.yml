@@ -1,0 +1,30 @@
+name: Cross-platform validation
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  posix:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7
+      - name: Validate package and Shell installers
+        run: |
+          python3 tests/test_package_contract.py
+          bash -n install.sh uninstall.sh
+
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Validate PowerShell installers
+        shell: pwsh
+        run: ./tests/test_windows_installer.ps1
