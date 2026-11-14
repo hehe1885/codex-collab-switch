@@ -1,5 +1,13 @@
 # 使用示例与常见问题
 
+## 在 Codex 桌面端选择 Skill
+
+1. 在聊天输入框输入 `，搜索 `codex-collab-switch`，从出现的候选列表中选择。
+2. 输入“开启协同”并发送；退出时选择同一个 Skill 并输入“退出协同”。
+3. 找不到时先新开对话，再重启 Codex；检查 `SKILL.md` 是否直接位于个人目录的 `skills/codex-collab-switch/` 中，避免多套一层文件夹。
+
+Windows 常见位置为 `%USERPROFILE%\.agents\skills\codex-collab-switch\SKILL.md` 或 `%USERPROFILE%\.codex\skills\codex-collab-switch\SKILL.md`。如果设置了 `CODEX_HOME`，还需检查实际使用的目录。不要同时安装两个同名版本。
+
 ## 1. 只想用当前模型
 
 安装后直接发普通任务即可，不需要先开启再关闭。若当前对话已经开启过协同，输入：

@@ -6,29 +6,31 @@
 
 ## 快速使用
 
-安装后，在 Codex 中选择 `codex-collab-switch` Skill，再输入“开启协同”。Codex CLI / IDE 扩展可以直接输入：
+### Codex 桌面端：在哪里选择 Skill？
+
+1. 安装完成后，新开一个 Codex 对话，在底部的**聊天输入框输入 `$`**。
+2. 输入或搜索 `codex-collab-switch`；如果出现候选列表，选择这个 Skill。
+3. 在选中的 Skill 后面输入“开启协同”，发送消息。按提示选择执行模型和思考强度。
+4. 想退出时，再次选择该 Skill，输入“退出协同”并发送；在已加载该 Skill 的当前对话，也可以直接说“退出协同”。
+
+如果输入 `$` 后没有找到它，先确认安装路径，再**新开对话或重启 Codex**后重试。Skill 文件应直接位于以下任一位置（不要把两个版本同时安装）：
+
+- Windows：`%USERPROFILE%\.agents\skills\codex-collab-switch\SKILL.md`，或 `%USERPROFILE%\.codex\skills\codex-collab-switch\SKILL.md`。
+- macOS / Linux：`~/.agents/skills/codex-collab-switch/SKILL.md`，或 `~/.codex/skills/codex-collab-switch/SKILL.md`。
+
+如果仍未出现，检查 Codex 的 Skills 设置以及实际使用的 `CODEX_HOME`。本 Skill 仅显式调用，单独输入普通任务不会自动开启协同。
+
+### 命令示例
+
+Codex CLI / IDE 扩展也可在输入框输入 `$` 选择 Skill，或使用以下形式：
 
 ```text
 $codex-collab-switch 开启协同
-```
-
-按提示选择执行模型和思考强度。也可以直接指定：
-
-```text
 $codex-collab-switch 开启协同，用 6luna，high
-```
-
-退出时仍然使用同一个 Skill：
-
-```text
 $codex-collab-switch 退出协同
 ```
 
-本项目面向 Codex。桌面版请从输入框的 Skill 选择器选择 `codex-collab-switch`；CLI / IDE 扩展可输入 `$` 选择 Skill，或使用上面的完整命令。首次必须显式选择或调用本 Skill。当前对话加载后，可以直接说“开启协同”“退出协同”“恢复单模型”。无需使用 `@codex-collab-switch`。
-
-调用方式参考 [OpenAI 官方 Skill 文档](https://learn.chatgpt.com/docs/build-skills)。
-
-仅调用 `$codex-collab-switch` 而不说明动作时，会询问要开启还是退出，不会自动开启。讨论、引用这些命令不会切换模式。
+仅调用 Skill 而不说明动作时，会询问要开启还是退出，不会自动开启。讨论、引用这些命令不会切换模式。调用方式可参考 [OpenAI 官方 Skill 文档](https://learn.chatgpt.com/docs/build-skills)。
 
 ## 核心行为
 
