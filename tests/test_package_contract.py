@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Maintainer checks for the cross-platform, instruction-only v04 package."""
+"""Maintainer checks for the cross-platform, instruction-only v1.0 package."""
 
 from __future__ import annotations
 
@@ -130,7 +130,7 @@ class PackageContractTests(unittest.TestCase):
             self.assertEqual(replaced.returncode, 0, replaced.stderr)
             self.assertFalse((target / "user-note.txt").exists())
             backups = list(
-                (home / ".agents/skill-backups").glob("codex-collab-switch.before-v04-*")
+                (home / ".agents/skill-backups").glob("codex-collab-switch.before-v1.0-*")
             )
             self.assertEqual(len(backups), 1)
             self.assertEqual(
@@ -175,7 +175,7 @@ class PackageContractTests(unittest.TestCase):
                 self.assertFalse((official / name).exists())
                 backups = list(
                     (home / ".agents/skill-backups").glob(
-                        f"{name}.uninstalled-v04-*"
+                        f"{name}.uninstalled-v1.0-*"
                     )
                 )
                 self.assertEqual(len(backups), 1)

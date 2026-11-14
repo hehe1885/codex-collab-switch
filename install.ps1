@@ -76,7 +76,7 @@ function Install-Skill {
             throw "Target differs; review it before using -Force: $Target"
         }
         New-Item -ItemType Directory -Path $BackupRoot -Force | Out-Null
-        $Backup = Join-Path $BackupRoot "$Name.before-v04-$Timestamp"
+        $Backup = Join-Path $BackupRoot "$Name.before-v1.0-$Timestamp"
         Move-Item -LiteralPath $Target -Destination $Backup
         Write-Output "Preserved previous target: $Backup"
     }

@@ -25,7 +25,7 @@ try {
 }
 if (-not $Refused) { throw "Modified target was overwritten without -Force." }
 & (Join-Path $PackageRoot "install.ps1") -Force -HomeDirectory $TestHome
-$Backups = @(Get-ChildItem -LiteralPath (Join-Path $TestHome '.agents/skill-backups') -Directory -Filter 'codex-collab-switch.before-v04-*')
+$Backups = @(Get-ChildItem -LiteralPath (Join-Path $TestHome '.agents/skill-backups') -Directory -Filter 'codex-collab-switch.before-v1.0-*')
 if ($Backups.Count -ne 1 -or -not (Test-Path -LiteralPath (Join-Path $Backups[0].FullName 'user-note.txt'))) {
     throw "Force installation did not preserve the modified target."
 }

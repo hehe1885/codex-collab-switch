@@ -55,7 +55,7 @@ function Uninstall-Skill {
     param([Parameter(Mandatory = $true)][string]$Name)
     $Source = Join-Path (Join-Path $PackageDir "skills") $Name
     $Target = Join-Path $SkillsRoot $Name
-    $Marker = Join-Path $Target ".codex-collab-switch-v04"
+    $Marker = Join-Path $Target ".codex-collab-switch-v1.0"
 
     if (-not (Test-Path -LiteralPath $Target -PathType Container) -or
         -not (Test-Path -LiteralPath $Marker -PathType Leaf)) {
@@ -69,7 +69,7 @@ function Uninstall-Skill {
         return
     }
     New-Item -ItemType Directory -Path $BackupRoot -Force | Out-Null
-    $Backup = Join-Path $BackupRoot "$Name.uninstalled-v04-$Timestamp"
+    $Backup = Join-Path $BackupRoot "$Name.uninstalled-v1.0-$Timestamp"
     Move-Item -LiteralPath $Target -Destination $Backup
     Write-Output "Moved installed skill to recoverable backup: $Backup"
 }

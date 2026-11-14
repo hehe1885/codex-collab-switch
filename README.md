@@ -48,7 +48,7 @@ $codex-collab-switch 退出协同
 
 ### 只下载单个 Skill（推荐）
 
-打开 [Releases](https://github.com/hehe1885/codex-collab-switch/releases/latest)，下载附件 **`codex-collab-switch-skill-v0.4.1.zip`**。这份附件仅包含一个 `codex-collab-switch` 文件夹（含 Skill 指令、引用文件、元数据和 MIT 许可），不包含仓库安装脚本和测试。
+打开 [Releases](https://github.com/hehe1885/codex-collab-switch/releases/latest)，下载附件 **`codex-collab-switch-skill-v1.0.zip`**。这份附件仅包含一个 `codex-collab-switch` 文件夹（含 Skill 指令、引用文件、元数据和 MIT 许可），不包含仓库安装脚本和测试。
 
 解压后将整个 `codex-collab-switch` 文件夹放入 `~/.agents/skills/`。Windows 对应 `%USERPROFILE%\.agents\skills\`。最终应直接出现 `~/.agents/skills/codex-collab-switch/SKILL.md`，不要多套一层同名目录。重启 Codex 后从 Skill 选择器选择。已存在同名目录时先备份，再替换。
 
@@ -84,7 +84,7 @@ skills/
     ├── agents/openai.yaml
     ├── references/selection.md
     ├── references/exit.md
-    └── .codex-collab-switch-v04
+    └── .codex-collab-switch-v1.0
 ```
 
 默认目标是 `~/.agents/skills/codex-collab-switch`。Windows 下 `~` 对应用户目录。客户端未立即显示 Skill 时，重启客户端后再检查。

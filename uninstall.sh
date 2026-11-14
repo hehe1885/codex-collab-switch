@@ -39,14 +39,14 @@ uninstall_skill() {
   local name="$1"
   local source="$package_dir/skills/$name"
   local target="$skills_root/$name"
-  local marker="$target/.codex-collab-switch-v04"
+  local marker="$target/.codex-collab-switch-v1.0"
 
   if [[ ! -d "$target" || -L "$target" || ! -f "$marker" ]] || ! diff -rq "$source" "$target" >/dev/null 2>&1; then
     printf 'Skipped missing, unowned, or modified skill: %s\n' "$target"
     return
   fi
   mkdir -p "$backup_root"
-  local backup="$backup_root/$name.uninstalled-v04-$timestamp"
+  local backup="$backup_root/$name.uninstalled-v1.0-$timestamp"
   mv -- "$target" "$backup"
   printf 'Moved installed skill to recoverable backup: %s\n' "$backup"
 }

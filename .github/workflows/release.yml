@@ -3,14 +3,14 @@ name: Publish single Skill release
 on:
   push:
     branches: [main]
-    paths: ["docs/releases/v0.4.1.md"]
+    paths: ["docs/releases/v1.0.md"]
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: release-v0.4.1
+  group: release-v1.0
   cancel-in-progress: false
 
 jobs:
@@ -30,7 +30,7 @@ jobs:
           from pathlib import Path
           from zipfile import ZipFile, ZIP_DEFLATED
           skill = Path("skills/codex-collab-switch")
-          output = Path("dist/codex-collab-switch-skill-v0.4.1.zip")
+          output = Path("dist/codex-collab-switch-skill-v1.0.zip")
           output.parent.mkdir(exist_ok=True)
           with ZipFile(output, "w", ZIP_DEFLATED) as archive:
               for path in sorted(skill.rglob("*")):
@@ -46,4 +46,4 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
         run: |
-          gh release create v0.4.1 dist/codex-collab-switch-skill-v0.4.1.zip --target "$GITHUB_SHA" --title "Codex Collab Switch v0.4.1" --notes-file docs/releases/v0.4.1.md
+          gh release create v1.0 dist/codex-collab-switch-skill-v1.0.zip --target "$GITHUB_SHA" --latest --title "Codex Collab Switch v1.0" --notes-file docs/releases/v1.0.md

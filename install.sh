@@ -67,7 +67,7 @@ install_skill() {
       exit 1
     fi
     mkdir -p "$backup_root"
-    local backup="$backup_root/$name.before-v04-$timestamp"
+    local backup="$backup_root/$name.before-v1.0-$timestamp"
     mv -- "$target" "$backup"
     printf 'Preserved previous target: %s\n' "$backup"
   fi
